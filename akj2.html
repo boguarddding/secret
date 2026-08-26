@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret</title>
+     <link rel="stylesheet" href="akjcss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Fuzzy+Bubbles:wght@400;700&family=Indie+Flower&family=Mansalva&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+
+    <body class="fade-in">
+       <div class="heart-container" id="heartContainer"></div>
+       <div>
+        <h1 class="page2-head">
+            Please click on the envelope to see the contents inside!
+        </h1>
+        <br>
+            <img class="pop-image" id="envelopeImg" src="imagessrc/printable-cute-drawing-envelope-for-school-and-kids-vector-removebg-preview.png" alt="Paris" width="200" style="cursor: pointer;">
+        </div>
+
+        <script>
+            const heartContainer = document.getElementById('heartContainer');
+            const envelopeImg = document.getElementById('envelopeImg');
+            
+            function spawnHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.textContent = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heartContainer.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 6000);
+            }
+            
+            envelopeImg.addEventListener('click', () => {
+                sessionStorage.setItem('startMusic', 'true');
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'akj3.html';
+                }, 500);
+            });
+            
+            setInterval(spawnHeart, 400);
+        </script>
+
+    </body>
+</html>

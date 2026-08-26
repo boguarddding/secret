@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret</title>
+    <link rel="stylesheet" href="akjcss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Fuzzy+Bubbles:wght@400;700&family=Indie+Flower&family=Mansalva&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+    <body class="body-akj3 fade-in">
+       <div class="heart-container" id="heartContainer"> </div>
+       <h3 class="page3-welcome">Hello, April Kem Joy!</h3>
+                 <p class="para-let"> Dear April, </p>
+       <br>
+        <img class="teddy-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTAzbTh6ZDNybW1vZ3lneWM0cGxsM2x4cGF6eTB3ZDhudHU2a2d5dSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/YKUvclrGYmDKXwtphf/giphy.gif">
+    
+        <p class="para-let"> 
+            At first, i thought that i don't have any chance with you.
+            looking back when we first interacted on Instagram, we were shy to talk to each other, 
+            simply exchanging notes on Instagram. I remember my banat to you saying "wanna start your january with me" 
+            something like that and i totaly shoot my shot and then i was like "fuck it, you only live once"
+            and then i don't know if you ignore me at that time. 
+            <br>
+            <br>
+            At february 13, you do the first move saying that replying notes is hard cause
+            it's limited, That was the very beginning of our conversation. I remember our conversation that lasts until 4-5am that time,
+            and i really enjoy talking to you and didn't expect that our conversation went well.
+            On our first talk, i've noticed  that we have a lot in common such as Musics, Cars, Interests, and many more.
+            <br>
+            <br>
+            I think this is the right time to say this to you, and i wanted to be straightforward with you. Overtime, my feelings
+            for you have grown deeper. I may not know everything about you right now but i would love to learn more about who you are and what you are. 
+            I really value the time we spend together, April. I really admire how thoughtful, genuine, how joyful and
+            energetic person you are. And all of the weird side you have that i thought i am the only one, i just keep getting caught up in your captivating eyes,
+            and i just love the way you smile, and your cute laughs. I just love everything about you!
+        
+        </p>
+        <div class="courting-section">
+            <img class="bouquet-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm9ucDJhNGozYmt6ZHpmdW9iMjI2aWsxajEwdXhmcDM5Y3N6c2NsayZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/LxraJxcszqseFhwrpU/giphy.gif" alt="Bouquet of flowers">
+            <p class="para-let">
+                You really mean a lot to me, April. My intentions towards you are genuine, i want to give you my full, and wanted to be serious about us. Therefore,
+                I would like to ask for your permission to properly court you.
+                <br>
+                <br>
+                Love, Ryu
+            </p>
+        </div>
+        <img class="pdown-img" src="imagessrc/down-arrow.svg" alt="Down arrow" width="50">
+        <div class="scroll-hint" id="scrollHint">keep scrolling</div>
+
+        <audio id="music" class="audio-controls" loop>
+            <source src="imagessrc/Mitski - My Love Mine All Mine.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+        <section class="love-reveal" id="loveReveal" aria-label="Love message">
+            <h2>I LOVE YOU!</h2>
+        </section>
+
+        <script>
+            const music = document.getElementById('music');
+            music.volume = 0.5;
+            if (sessionStorage.getItem('startMusic') === 'true') {
+                music.play().catch(() => {
+                    document.addEventListener('click', () => music.play(), { once: true });
+                });
+                sessionStorage.removeItem('startMusic');
+            }
+        </script>
+       
+
+        <script>
+            const heartContainer = document.getElementById('heartContainer');
+            
+            function spawnHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.textContent = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heartContainer.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 6000);
+            }
+            
+            setInterval(spawnHeart, 400);
+        </script>
+
+        <script>
+            const loveReveal = document.getElementById('loveReveal');
+            const downArrow = document.querySelector('.pdown-img');
+            const scrollHint = document.getElementById('scrollHint');
+            const bouquet = document.querySelector('.bouquet-img');
+            let finalRevealShown = false;
+
+            function createHeartBurst(count, delayOffset) {
+                for (let index = 0; index < count; index += 1) {
+                    const heart = document.createElement('div');
+                    heart.className = 'celebration-heart';
+                    heart.textContent = '❤';
+                    heart.style.setProperty('--heart-x', `${Math.random() * 100 - 50}vw`);
+                    heart.style.setProperty('--heart-y', `${Math.random() * -70 - 20}vh`);
+                    heart.style.setProperty('--heart-delay', `${delayOffset + Math.random() * 0.35}s`);
+                    loveReveal.appendChild(heart);
+                }
+            }
+
+            function revealLoveMessage() {
+                const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+                if (reachedBottom && !finalRevealShown) {
+                    finalRevealShown = true;
+                    document.body.classList.add('final-stage');
+                    bouquet.classList.add('final-glow');
+                    downArrow.classList.add('is-hidden');
+                    scrollHint.classList.add('is-hidden');
+                    window.setTimeout(() => {
+                        loveReveal.classList.add('is-visible');
+                        createHeartBurst(16, 0.1);
+                        window.setTimeout(() => createHeartBurst(16, 0.1), 500);
+                        window.setTimeout(() => createHeartBurst(16, 0.1), 1000);
+                        window.setTimeout(() => document.body.classList.remove('final-stage'), 3300);
+                    }, 450);
+                }
+            }
+
+            window.addEventListener('scroll', revealLoveMessage, { passive: true });
+        </script>
+    </body>
+</html>
